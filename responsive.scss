@@ -1,0 +1,66 @@
+/*Mixin*/
+/*Set values with respective display*/
+/*
+.col- (extra small devices - screen width less than 576px)
+.col-sm- (small devices - screen width equal to or greater than 576px)
+.col-md- (medium devices - screen width equal to or greater than 768px)
+.col-lg- (large devices - screen width equal to or greater than 992px)
+.col-xl- (xlarge devices - screen width equal to or greater than 1200px)
+*/
+$mobile-width: 576px;
+$tablet-width: 768px;
+$desktop-width: 992px;
+$large-desktop: 1200px;
+
+@mixin media-mobile {
+  @media only screen and (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin media-self-specify ($width, $lt, $gt) {
+  @if($lt == 1) {
+    @media only screen and (max-width: #{$width}) {
+      @content;
+    }
+  }
+  @else if($gt == 1) {
+    @media only screen and (min-width: #{$width}) {
+      @content;
+    }
+  }
+}
+@mixin media-self-specify_1 ($width, $ltW, $gtW, $height, $ltH, $gtH) {
+  @if($ltW == 1 and $ltH == 1) {
+    @media only screen and (max-width: $width) and (max-height: $height) {
+      @content;
+    }
+  }
+  @else if ($gtW == 1 and $gtH == 1) {
+    @media only screen and (min-width: $width) and (min-height: $height) {
+      @content;
+    }
+  }
+  @else if ($ltW == 1 and $gtH == 1) {
+    @media only screen and (max-width: $width) and (min-height: $height) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $width) and (max-height: $height) {
+      @content;
+    }
+  }
+}
+@mixin media-self-specify_2 ($width_1, $width_2) {
+  @if($width_1 < $width_2) {
+    @media only screen and (min-width: #{$width_1}) and (max-width: #{$width_2}) {
+      @content;
+    }
+  }
+  @else {
+    @media only screen and (min-width: #{$width_2}) and (max-width: #{$width_1}) {
+      @content;
+    }
+  }
+}
+

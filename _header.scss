@@ -1,0 +1,118 @@
+/*
+Header Section
+*/
+header {
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  z-index:10000;
+  
+  nav {
+    background: #f5f5f5;
+    position: fixed;
+
+    @include media-self-specify(992px, 1, 0) {
+      & {
+        z-index: 999;
+      }
+    }
+
+    @include media-self-specify(768px, 1, 0) {
+      & {
+        padding: 0 !important;
+      }
+    }
+
+    height: 75px;
+
+    .container-fluid {
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      .navbar-toggler {
+        font-size: 1.50rem;
+
+        @include media-self-specify(768px, 1, 0) {
+          & {
+            margin-right: 25px;
+          }
+        }
+
+        &:focus {
+          outline: 0;
+          box-shadow: 0 0 3px $color_bay_of_many_approx;
+        }
+
+        .fas .fa-bars {
+          color: $color_bay_of_many_approx;
+        }
+      }
+
+      .navbar-collapse {
+        flex-grow: unset;
+      }
+
+      .navbar-brand {
+        @include media-mobile {
+          overflow: hidden;
+        }
+
+        margin-left: 20px;
+      }
+
+      #main-menu {
+        margin-left: auto;
+
+        .navbar-nav {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          background: #f5f5f5;
+          text-align: center;
+
+          @include media-self-specify(768px, 1, 0) {
+            & {
+              flex-direction: column;
+            }
+          }
+
+          .nav-item {
+            display: inline-block;
+            margin-left: 1.8rem;
+            transition: transform ease-in-out .2s;
+
+            @include media-self-specify(1200px, 1, 0) {
+              &:hover {
+                transform: scaleX(1.1) translateX(5%) !important;
+                color: $color-highlight !important;
+              }
+            }
+            @include media-self-specify(768px, 1, 0) {
+              margin-left: 0;
+            }
+
+            &:hover {
+              transform: scale(1.1);
+              color: $color-highlight !important;
+            }
+
+            &.active {
+              color: $color-highlight !important;
+            }
+          }
+
+          .nav-link {
+            display: block;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 19px;
+            text-decoration: none;
+            color: inherit;
+          }
+        }
+      }
+    }
+  }
+}
